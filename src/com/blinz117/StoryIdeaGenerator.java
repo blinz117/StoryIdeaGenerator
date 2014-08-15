@@ -14,6 +14,19 @@ import java.util.Random;
  */
 public class StoryIdeaGenerator extends javax.swing.JFrame {
 
+// TODO: Eventually, I want to move all of these to external files, so they
+// will be easy to modify, or load in completely different or multiple files
+
+// TODO: Add character motivation: love, greed, laziness, desire to win, revenge, 
+// self-improvement, growing up, growing old, fear of death, saving lives, imprisonment,
+// escape, passion, romance, selfishness, creativity, hunger, anger, loss, work, family,
+// companionship, heartbreak, home, safety, lost, illness, death, recognition,
+// fear, temptation, lust, loneliness, power, duty, complacency, boredom, reward, competition,
+// redemption, self discovery, overcoming fear, justice, secret, recovery, nostalgia,
+// finding love, becoming the best, false hope, hope, insanity, religion, faith, survival,
+// depression, addiction, running out of time, acceptance, exploration
+
+
     private static final String[] genreList = {
         "action",
         "romance",
@@ -98,7 +111,24 @@ public class StoryIdeaGenerator extends javax.swing.JFrame {
         "wilderness",
         "sky",
         "kitchen",
-        "party"
+        "party",
+        "store",
+        "beach",
+        "apartment",
+        "future",
+        "past",
+        "present day",
+        "apocalyptic wasteland",
+        "arctic",
+        "disaster site",
+        "afterlife",
+        "North America",
+        "South America",
+        "Australia",
+        "jungle",
+        "small town",
+        "village",
+        "zoo"
     };
     
     private static final String[] charTypeList = {
@@ -121,7 +151,7 @@ public class StoryIdeaGenerator extends javax.swing.JFrame {
         "husband",
         "wife",
         "office worker",
-        "CEO",
+        "manager",
         "government official",
         "parent",
         "waiter",
@@ -146,7 +176,30 @@ public class StoryIdeaGenerator extends javax.swing.JFrame {
         "villain",
         "athlete",
         "criminal",
-        "office worker"
+        "office worker",
+        "plant",
+        "insect",
+        "boy",
+        "girl",
+        "anonymous",
+        "deity",
+        "pirate",
+        "cowboy",
+        "rebel",
+        "artificial intelligence",
+        "imaginary being",
+        "time traveller",
+        "scientist",
+        "coach",
+        "teacher",
+        "employee",
+        "business owner",
+        "engineer",
+        "personification of abstract concept",
+        "politician",
+        "bird",
+        "performer",
+        "minority"
     };
     
     private static final String[] charAttrList = {
@@ -209,7 +262,22 @@ public class StoryIdeaGenerator extends javax.swing.JFrame {
         "sick",
         "creative",
         "motivated",
-        "daredevil"
+        "daredevil",
+        "magical",
+        "gifted",
+        "nervous",
+        "trustowrthy",
+        "honest",
+        "dishonest",
+        "organized",
+        "messy",
+        "focused",
+        "determined",
+        "scary",
+        "friendly",
+        "popular",
+        "hated",
+        "psychic"
     };
     
     private Random rand = new Random();
