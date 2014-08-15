@@ -17,16 +17,6 @@ public class StoryIdeaGenerator extends javax.swing.JFrame {
 // TODO: Eventually, I want to move all of these to external files, so they
 // will be easy to modify, or load in completely different or multiple files
 
-// TODO: Add character motivation: love, greed, laziness, desire to win, revenge, 
-// self-improvement, growing up, growing old, fear of death, saving lives, imprisonment,
-// escape, passion, romance, selfishness, creativity, hunger, anger, loss, work, family,
-// companionship, heartbreak, home, safety, lost, illness, death, recognition,
-// fear, temptation, lust, loneliness, power, duty, complacency, boredom, reward, competition,
-// redemption, self discovery, overcoming fear, justice, secret, recovery, nostalgia,
-// finding love, becoming the best, false hope, hope, insanity, religion, faith, survival,
-// depression, addiction, running out of time, acceptance, exploration
-
-
     private static final String[] genreList = {
         "action",
         "romance",
@@ -280,6 +270,68 @@ public class StoryIdeaGenerator extends javax.swing.JFrame {
         "psychic"
     };
     
+    public static final String[] motivationList = {
+        "love",
+        "greed",
+        "laziness",
+        "desire to win",
+        "revenge",
+        "self-improvement",
+        "growing up",
+        "growing old",
+        "fear of death",
+        "saving lives",
+        "imprisonment",
+        "escape",
+        "passion",
+        "romance",
+        "selfishness",
+        "creativity",
+        "hunger",
+        "anger",
+        "loss",
+        "work",
+        "family",
+        "companionship",
+        "heartbreak",
+        "home",
+        "safety",
+        "lost",
+        "illness",
+        "death",
+        "recognition",
+        "fear",
+        "temptation",
+        "lust",
+        "loneliness",
+        "power",
+        "duty",
+        "complacency",
+        "boredom",
+        "reward",
+        "competition",
+        "redemption",
+        "self discovery",
+        "overcoming fear",
+        "justice",
+        "secret",
+        "recovery",
+        "nostalgia",
+        "finding love",
+        "becoming the best",
+        "false hope",
+        "hope",
+        "insanity",
+        "religion",
+        "faith",
+        "survival",
+        "depression",
+        "addiction",
+        "running out of time",
+        "acceptance",
+        "exploration"
+    };
+    
     private Random rand = new Random();
     
     /**
@@ -296,6 +348,8 @@ public class StoryIdeaGenerator extends javax.swing.JFrame {
     public String[] getCharTypeList() { return charTypeList; }
     
     public String[] getCharAttrList() { return charAttrList; }
+    
+    public String[] getMotivationList() { return motivationList; }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -315,6 +369,8 @@ public class StoryIdeaGenerator extends javax.swing.JFrame {
         comboCharType = new javax.swing.JComboBox();
         comboCharAttr = new javax.swing.JComboBox();
         promptCharAttr = new javax.swing.JLabel();
+        promptMotivation = new javax.swing.JLabel();
+        comboMotivation = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -341,6 +397,10 @@ public class StoryIdeaGenerator extends javax.swing.JFrame {
 
         promptCharAttr.setText("Character Attribute");
 
+        promptMotivation.setText("Character Motivation");
+
+        comboMotivation.setModel(new javax.swing.DefaultComboBoxModel(getMotivationList()));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -350,48 +410,50 @@ public class StoryIdeaGenerator extends javax.swing.JFrame {
                 .addComponent(buttonGenerate, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                    .addComponent(promptGenre)
+                    .addComponent(promptSetting)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(comboSetting, javax.swing.GroupLayout.Alignment.LEADING, 0, 203, Short.MAX_VALUE)
+                        .addComponent(comboGenre, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comboCharType, 0, 236, Short.MAX_VALUE)
+                    .addComponent(comboCharAttr, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(comboMotivation, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(promptCharType)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(comboCharType, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(comboGenre, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(comboSetting, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(promptGenre, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(promptSetting, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(promptCharAttr)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(comboCharAttr, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(250, 250, 250))))
+                        .addComponent(promptCharAttr)
+                        .addComponent(promptMotivation)))
+                .addGap(5, 5, 5))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(promptGenre)
+                        .addComponent(promptCharType)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(comboGenre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(comboCharType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(promptSetting)
+                        .addComponent(promptCharAttr)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(comboSetting, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(buttonGenerate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(comboCharAttr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(promptGenre)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(comboGenre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(promptSetting)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(comboSetting, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(buttonGenerate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(promptCharType)
+                .addComponent(promptMotivation)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(comboCharType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(promptCharAttr)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(comboCharAttr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addComponent(comboMotivation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
@@ -403,6 +465,7 @@ public class StoryIdeaGenerator extends javax.swing.JFrame {
         comboSetting.setSelectedIndex(rand.nextInt(comboSetting.getItemCount()));
         comboCharType.setSelectedIndex(rand.nextInt(comboCharType.getItemCount()));
         comboCharAttr.setSelectedIndex(rand.nextInt(comboCharAttr.getItemCount()));
+        comboMotivation.setSelectedIndex(rand.nextInt(comboMotivation.getItemCount()));
     }//GEN-LAST:event_buttonGenerateActionPerformed
 
     /**
@@ -415,12 +478,13 @@ public class StoryIdeaGenerator extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+            javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(StoryIdeaGenerator.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
@@ -445,10 +509,12 @@ public class StoryIdeaGenerator extends javax.swing.JFrame {
     private javax.swing.JComboBox comboCharAttr;
     private javax.swing.JComboBox comboCharType;
     private javax.swing.JComboBox comboGenre;
+    private javax.swing.JComboBox comboMotivation;
     private javax.swing.JComboBox comboSetting;
     private javax.swing.JLabel promptCharAttr;
     private javax.swing.JLabel promptCharType;
     private javax.swing.JLabel promptGenre;
+    private javax.swing.JLabel promptMotivation;
     private javax.swing.JLabel promptSetting;
     // End of variables declaration//GEN-END:variables
 }
